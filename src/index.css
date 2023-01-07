@@ -41,9 +41,37 @@ body {
     color: rgb(202, 202, 202);
 }
 
-.heading--text {
+.home--text, .quiz--question {
     font-family: 'Karla', sans-serif;
-    font-size: 3rem;
     font-weight: 700;
+    color: #293264;
+}
+
+.home--text {
+    font-size: 3rem;
+}
+
+.quiz-sec {
+    padding-top: 40px;
+}
+
+.quiz--question {
+    font-size: 1.5rem;
+}
+
+.quiz-sec > button {
+    background-color: white;
+    border: 1px solid #4D5B9E;
+    border-radius: 15px;
+    color: #293264;
+}
+
+.quiz-sec > button:hover {
+    background-color: #bbbfd4;
+    color: #293264;
+}
+
+.active {
+    background-color: #D6DBF5;
     color: #293264;
 }
