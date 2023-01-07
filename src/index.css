@@ -18,8 +18,31 @@ body {
     height: 100vh;
 }
 
-.home--text {
-    font-size: 2rem;
+.home-sec > p {
+    font-size: 1.5rem;
+}
+
+.home-sec > button {
+    padding: 20px 70px;
+    font-size: 1rem;
+    background-color: #4D5B9E;
+    color: white;
+    border-radius: 20px;
+}
+
+.home-sec > button:hover {
+    background-color: #6576ce;
+    color: white;
+}
+
+.home-sec > button:active {
+    background-color: #5868b6;
+    color: white;
+}
+
+.heading--text {
+    font-family: 'Karla', sans-serif;
+    font-size: 3rem;
     font-weight: 700;
     color: #293264;
 }
