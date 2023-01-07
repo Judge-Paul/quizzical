@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Home() {
+function Home(props) {
     return(
         <div className="d-flex flex-column align-items-center justify-content-center home-sec">
-            <div className="heading--text">
+            <div className="heading--text mb-3">
                 Quizzical
             </div>
             <p>Welcome to Quizzical Nigeria's favorite free online trivia game.</p>
-            <button className="btn mt-3">Start quiz</button>
+            <button className="btn mt-5" onClick={props.onClick}>Start quiz</button>
         </div>
     )
 }

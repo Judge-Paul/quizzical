@@ -20,6 +20,7 @@ body {
 
 .home-sec > p {
     font-size: 1.5rem;
+    color: #293264;
 }
 
 .home-sec > button {
@@ -32,12 +33,12 @@ body {
 
 .home-sec > button:hover {
     background-color: #6576ce;
-    color: white;
+    color: rgb(228, 227, 227);
 }
 
 .home-sec > button:active {
     background-color: #5868b6;
-    color: white;
+    color: rgb(202, 202, 202);
 }
 
 .heading--text {
