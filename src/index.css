@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Karla:wght@700&display=swap');
+
 body {
     background-image: url(/background.png);
+    font-family: 'Inter', sans-serif;
 }
 
 @media screen and (max-width: 991px) {
@@ -8,4 +12,14 @@ body {
 
 @media screen and (min-width: 992px) {
     body{background-size: cover;}
+}
+
+.home-sec {
+    height: 100vh;
+}
+
+.home--text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #293264;
 }
