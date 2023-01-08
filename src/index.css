@@ -71,7 +71,7 @@ body {
     color: #293264;
 }
 
-.active {
-    background-color: #D6DBF5;
+.pressed {
+    background-color: #D6DBF5 !important;
     color: #293264;
 }

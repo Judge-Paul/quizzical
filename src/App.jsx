@@ -7,7 +7,6 @@ function App() {
 
   function startGame() {
     sethasGameStarted(true)
-    console.log(hasGameStarted)
   }
   return (
     <div className="container">
