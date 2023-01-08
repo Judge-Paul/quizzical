@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Question from './Question.jsx'
+import Question from './Question'
+import { nanoid } from 'nanoid'
 
 export default function Quiz() {
     const [quiz, setQuiz] = useState([])
@@ -16,10 +17,11 @@ export default function Quiz() {
         }
         fetchData()
     }, [])
+
     const questionElements = quiz.map( quizData => {
         const question = decodeURIComponent(quizData.question);
-        console.log(question)
-        return (<Question 
+        return (<Question
+        key={nanoid()}
         question={question}
         answers={answers}
         />)
