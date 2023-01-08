@@ -10,21 +10,22 @@ export default function Quiz() {
     useEffect(() => {
         const fetchData = async () => {
             const result = await fetch(apiURL)
+            let quizResult = []
             result.json()
                 .then(json => setQuiz(json.results))
         }
         fetchData()
     }, [])
-    console.log(quiz)
     const questionElements = quiz.map( quizData => {
+        const question = decodeURIComponent(quizData.question);
+        console.log(question)
         return (<Question 
-        question={quizData.question}
+        question={question}
         answers={answers}
         />)
     })
     return(
         <div className="quiz-sec">
-            {/* <Question question="How would one say goodbye in Spanish?" answers={answers} /> */}
             {questionElements}
         </div>
     )
