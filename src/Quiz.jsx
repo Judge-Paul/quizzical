@@ -4,31 +4,41 @@ import { nanoid } from 'nanoid'
 
 export default function Quiz() {
     const [quiz, setQuiz] = useState([])
-    const [questions, setQuestions] = useState([])
-    const answers = ["Adios", "Hola", "Au Revoir", "Salir"]
-    
     const apiURL = "https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple"
-    useEffect(() => {
+
+    const [questions, setQuestions] = useState([]);
+
+useEffect(() => {
         const fetchData = async () => {
             const result = await fetch(apiURL)
-            let quizResult = []
             result.json()
-                .then(json => setQuiz(json.results))
+                .then(json => json.results)
+                .then(dataRequest => setQuestions(dataRequest))
         }
         fetchData()
     }, [])
 
-    const questionElements = quiz.map( quizData => {
-        const question = decodeURIComponent(quizData.question);
-        return (<Question
-        key={nanoid()}
-        question={question}
-        answers={answers}
+
+useEffect(() => {
+    setQuiz(questions.map(question => {
+    let newObject = {question: "", options: [], answer: "", id: ""}
+    newObject.question = question.question
+    newObject.options = question.incorrect_answers
+    newObject.options.push(question.correct_answer)
+    newObject.answer = question.correct_answer
+    newObject.id = nanoid()
+    return (<Question
+        key = {newObject.id}
+        question = {newObject.question}
+        answers = {newObject.options}
         />)
-    })
+    }))
+}, [questions])
+
+    
     return(
         <div className="quiz-sec">
-            {questionElements}
+            {quiz}
         </div>
     )
 }
