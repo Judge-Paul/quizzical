@@ -30,7 +30,7 @@ useEffect(() => {
     return (<Question
         key = {newObject.id}
         question = {newObject.question}
-        answers = {newObject.options}
+        options = {newObject.options}
         />)
     }))
 }, [questions])
