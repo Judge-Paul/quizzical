@@ -21,16 +21,30 @@ useEffect(() => {
 
 useEffect(() => {
     setQuiz(questions.map(question => {
+    function setPressed(id) {
+    }
     let newObject = {question: "", options: [], answer: "", id: ""}
+    let optionsList = question.incorrect_answers
+    optionsList.push(question.correct_answer)
+    optionsList.sort(() => Math.random() - 0.5)
+    const optionElements = optionsList.map(option => {    
+        let optionsObject = {id: "", option: ""}
+        optionsObject.id = nanoid()
+        optionsObject.option = option
+        return (<button 
+            onClick={(event) => setPressed(optionsObject.id)} 
+            key={optionsObject.id} 
+            className="btn mr-4 px-4 mt-2">
+                {optionsObject.option}
+            </button>)
+    })
     newObject.question = question.question
-    newObject.options = question.incorrect_answers
-    newObject.options.push(question.correct_answer)
     newObject.answer = question.correct_answer
     newObject.id = nanoid()
     return (<Question
         key = {newObject.id}
         question = {newObject.question}
-        options = {newObject.options}
+        options = {optionElements}
         />)
     }))
 }, [questions])
