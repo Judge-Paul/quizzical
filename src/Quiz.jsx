@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Question from './Question'
 import { nanoid } from 'nanoid'
+import { decode } from 'html-entities'
 
 export default function Quiz() {
     const [quiz, setQuiz] = useState([])
@@ -28,17 +29,17 @@ useEffect(() => {
     optionsList.push(question.correct_answer)
     optionsList.sort(() => Math.random() - 0.5)
     const optionElements = optionsList.map(option => {    
-        let optionsObject = {id: "", option: ""}
+        let optionsObject = {id: "", option: "", isPressed: false}
         optionsObject.id = nanoid()
         optionsObject.option = option
         return (<button 
             onClick={(event) => setPressed(optionsObject.id)} 
             key={optionsObject.id} 
             className="btn mr-4 px-4 mt-2">
-                {optionsObject.option}
+                {decode(optionsObject.option)}
             </button>)
     })
-    newObject.question = question.question
+    newObject.question = decode(question.question)
     newObject.answer = question.correct_answer
     newObject.id = nanoid()
     return (<Question
