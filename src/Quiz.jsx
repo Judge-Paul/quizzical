@@ -7,21 +7,21 @@ export default function Quiz() {
     const [quiz, setQuiz] = useState([])
     const apiURL = "https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple"
 
-    const [questions, setQuestions] = useState([]);
+    const [questionsData, setQuestionsData] = useState([]);
 
 useEffect(() => {
         const fetchData = async () => {
             const result = await fetch(apiURL)
             result.json()
                 .then(json => json.results)
-                .then(dataRequest => setQuestions(dataRequest))
+                .then(dataRequest => setQuestionsData(dataRequest))
         }
         fetchData()
     }, [])
 
 
 useEffect(() => {
-    setQuiz(questions.map(question => {
+    setQuiz(questionsData.map(question => {
     function setPressed(id) {
     }
     let newObject = {question: "", options: [], answer: "", id: ""}
@@ -48,7 +48,7 @@ useEffect(() => {
         options = {optionElements}
         />)
     }))
-}, [questions])
+}, [questionsData])
 
     
     return(
