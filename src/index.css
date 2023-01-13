@@ -59,14 +59,14 @@ body {
     font-size: 1.5rem;
 }
 
-.quiz-sec > button {
+.quiz-sec > .quiz--options > button {
     background-color: white;
     border: 1px solid #4D5B9E;
     border-radius: 15px;
     color: #293264;
 }
 
-.quiz-sec > button:hover {
+.quiz-sec > .quiz--options > button:hover {
     background-color: #bbbfd4;
     color: #293264;
 }
@@ -82,4 +82,8 @@ body {
     background-color: #4D5B9E;
     color: white;
     border-radius: 20px;
+}
+
+@media screen and (max-width: 480px) {
+    .option-btn {width: 90%; float: center;}
 }
