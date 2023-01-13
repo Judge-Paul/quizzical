@@ -52,7 +52,9 @@ export default function Quiz() {
         }))
     }, [questionsData])
 
-    
+    function handleGame() {
+    }
+
     const quizElements = quiz.map(quizData => {
         return (<Question
             key = {quizData.id}
@@ -66,8 +68,10 @@ export default function Quiz() {
     )
     return(
         <div className="quiz-sec">
-            {/* {quiz} */}
             {quizElements}
+            <div className="text-center my-5">
+                <button className="btn action-btn" onClick={handleGame}>Check Answers</button>
+            </div>
         </div>
     )
 }
