@@ -76,6 +76,18 @@ body {
     color: #293264;
 }
 
+.correct {
+    background-color: #94D7A2 !important;
+}
+
+.incorrect {
+    background-color: #F8BCBC !important;
+}
+
+.unchecked {
+    background-color: #e3e7f1 !important;
+}
+
 .action-btn {
     padding: 15px 40px;
     font-size: 1rem;

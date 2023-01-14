@@ -6,8 +6,9 @@ import { decode } from 'html-entities'
 export default function Quiz() {
     const [quiz, setQuiz] = useState([])
     const apiURL = "https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple"
-
-    const [questionsData, setQuestionsData] = useState([]);
+    const [questionsData, setQuestionsData] = useState([])
+    const [correctAnswers, setCorrectAnswers] = useState(0) 
+    const [isDone, setIsDone] = useState(false)
 
     useEffect(() => {
             const fetchData = async () => {
@@ -46,15 +47,25 @@ export default function Quiz() {
         })
         newObject.options = options
         newObject.question = decode(question.question)
-        newObject.answer = question.correct_answer
+        newObject.answer = decode(question.correct_answer)
         newObject.id = nanoid()
         return newObject
         }))
     }, [questionsData])
 
     function handleGame() {
+        setQuiz(quizItem => quizItem.map( q => {
+            setIsDone(true)
+            if (q.selected === q.answer) {
+                setCorrectAnswers(currCorrectAnswers => currCorrectAnswers + 1)
+                return {...q, isCorrect: true}
+            } else {
+                return {...q, isCorrect: false}
+            }
+        }))
     }
 
+    console.log(quiz)
     const quizElements = quiz.map(quizData => {
         return (<Question
             key = {quizData.id}
@@ -62,12 +73,14 @@ export default function Quiz() {
             selected = {quizData.selected}
             question = {quizData.question}
             options = {quizData.options}
+            isDone = {isDone}
+            isCorrect = {quizData.isCorrect}
             setPressed = {setPressed}
         />)
     }
     )
     return(
-        <div className="quiz-sec">
+        <div className="quiz-sec mt-3">
             {quizElements}
             <div className="text-center my-5">
                 <button className="btn action-btn" onClick={handleGame}>Check Answers</button>

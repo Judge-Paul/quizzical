@@ -2,7 +2,18 @@ import React from 'react'
 
 export default function Question(props) {
     const optionElements = props.options[0].map(optionsObject => {
-        const classString = props.selected === optionsObject.option ? "btn mr-4 px-4 mt-2 option-btn pressed" : "btn mr-4 px-4 mt-2 option-btn"
+        if (props.isDone) {
+            const classString = props.isCorrect ? "btn mr-4 px-4 mt-2 option-btn correct" : "btn mr-4 px-4 mt-2 option-btn incorrect"
+            return (
+                <button 
+                onClick={(event) => props.setPressed(props.questionId, optionsObject.option)} 
+                key={optionsObject.id} 
+                className={classString}>
+                    {optionsObject.option}
+                </button>
+            )
+        } else {
+            const classString = props.selected === optionsObject.option ? "btn mr-4 px-4 mt-2 option-btn pressed" : "btn mr-4 px-4 mt-2 option-btn"
             return (
                     <button 
                     onClick={(event) => props.setPressed(props.questionId, optionsObject.option)} 
@@ -12,6 +23,7 @@ export default function Question(props) {
                     </button>
                 )
         }
+    }
     )
     return (
         <>
