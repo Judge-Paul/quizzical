@@ -73,6 +73,7 @@ export default function Quiz() {
             selected = {quizData.selected}
             question = {quizData.question}
             options = {quizData.options}
+            answer = {quizData.answer}
             isDone = {isDone}
             isCorrect = {quizData.isCorrect}
             setPressed = {setPressed}

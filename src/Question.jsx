@@ -3,7 +3,26 @@ import React from 'react'
 export default function Question(props) {
     const optionElements = props.options[0].map(optionsObject => {
         if (props.isDone) {
-            const classString = props.isCorrect ? "btn mr-4 px-4 mt-2 option-btn correct" : "btn mr-4 px-4 mt-2 option-btn incorrect"
+            let classString
+            // let classString = props.isCorrect ? "btn mr-4 px-4 mt-2 option-btn correct" : "btn mr-4 px-4 mt-2 option-btn incorrect"
+            if (optionsObject.option === props.answer) {
+                classString = "btn mr-4 px-4 mt-2 option-btn correct"
+            } else if (props.selected === optionsObject.option && props.selected !== props.answer) {
+                classString = "btn mr-4 px-4 mt-2 option-btn incorrect"
+            } else {
+                classString = "btn mr-4 px-4 mt-2 option-btn unchecked"
+            }
+            // if (props.isCorrect && props.selected === optionsObject.option) {
+            //     classString = "btn mr-4 px-4 mt-2 option-btn correct"
+            // } else if (props.isCorrect === true && props.selected !== optionsObject.option) {
+            //     classString = "btn mr-4 px-4 mt-2 option-btn unchecked"
+            // } else if (optionsObject.option === props.answer) {
+            //     classString = "btn mr-4 px-4 mt-2 option-btn correct"
+            // } else if (!props.isCorrect){
+            //     classString = "btn mr-4 px-4 mt-2 option-btn incorrect"
+            // } else {
+            //     classString = "btn mr-4 px-4 mt-2 option-btn unchecked"
+            // }
             return (
                 <button 
                 onClick={(event) => props.setPressed(props.questionId, optionsObject.option)} 
