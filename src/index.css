@@ -23,7 +23,7 @@ body {
     color: #293264;
 }
 
-.home-sec > button {
+.home-sec button {
     padding: 20px 70px;
     font-size: 1rem;
     background-color: #4D5B9E;
@@ -31,12 +31,12 @@ body {
     border-radius: 20px;
 }
 
-.home-sec > button:hover, .action-btn:hover {
+.home-sec button:hover, .action-btn:hover {
     background-color: #6576ce;
     color: rgb(228, 227, 227);
 }
 
-.home-sec > button:active, .action-btn:hover {
+.home-sec button:active, .action-btn:hover {
     background-color: #5868b6;
     color: rgb(202, 202, 202);
 }
