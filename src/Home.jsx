@@ -6,8 +6,7 @@ function Home(props) {
             <div className="home--text mb-3">
                 Quizzical
             </div>
-            <form className="home--input text-center">
-                <label htmlFor="amount">Number of questions:</label>
+            <div className="home--input text-center">
                 <input 
                     type="number" 
                     name="amount" 
@@ -70,8 +69,8 @@ function Home(props) {
                         <option value="multiple">Multiple Choice</option>
                         <option value="boolean">True / False</option>
                 </select>
-                <button className="btn mt-5" onClick={props.onClick}>Start quiz</button>
-            </form>
+                <button className="btn mt-5" onClick={props.startGame}>Start quiz</button>
+            </div>
         </div>
     )
 }

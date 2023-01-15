@@ -6,9 +6,9 @@ function App() {
   const [hasGameStarted, sethasGameStarted] = React.useState(false)
   const [apiData, setApiData] = useState({
       amount: "5",
-      category: "General Knowledge",
-      difficulty: "Easy",
-      type: "Multiple Choice"
+      category: "9",
+      difficulty: "easy",
+      type: "multiple"
   })
 
   function handleFormChange(event) {
@@ -29,7 +29,7 @@ function App() {
       {hasGameStarted ? 
         <Quiz apiData={apiData} /> : 
         <Home 
-          onClick={startGame} 
+          startGame={startGame}
           handleFormChange={handleFormChange} 
           apiData={apiData} 
         />}
