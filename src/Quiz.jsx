@@ -54,18 +54,28 @@ export default function Quiz() {
     }, [questionsData])
 
     function handleGame() {
-        setQuiz(quizItem => quizItem.map( q => {
+        let correctAnswersCount = 0;
+        if (!isDone) {
+            setQuiz(quizItem => quizItem.map( q => {
+                if (q.selected === q.answer) {
+                    correctAnswersCount += 1
+                    getCorrectAnswers(correctAnswersCount)
+                    console.log(correctAnswersCount)
+                    return {...q, isCorrect: true}
+                } else {
+                    return {...q, isCorrect: false}
+                }
+            }))
             setIsDone(true)
-            if (q.selected === q.answer) {
-                setCorrectAnswers(currCorrectAnswers => currCorrectAnswers + 1)
-                return {...q, isCorrect: true}
-            } else {
-                return {...q, isCorrect: false}
-            }
-        }))
+        } else {
+            window.location.reload(true)
+        }
+    }
+    
+    function getCorrectAnswers(answers) {
+        setCorrectAnswers(answers/2)
     }
 
-    console.log(quiz)
     const quizElements = quiz.map(quizData => {
         return (<Question
             key = {quizData.id}
@@ -78,13 +88,16 @@ export default function Quiz() {
             isCorrect = {quizData.isCorrect}
             setPressed = {setPressed}
         />)
-    }
-    )
+    })
+
     return(
         <div className="quiz-sec mt-3">
             {quizElements}
-            <div className="text-center my-5">
-                <button className="btn action-btn" onClick={handleGame}>Check Answers</button>
+            <div className="answers-sec text-center my-5"> 
+                {isDone && `You got ${correctAnswers} / ${quiz.length} questions right or ${(correctAnswers/quiz.length) * 100}%`}
+                <button className="btn action-btn ml-4 mt-3" onClick={handleGame}>
+                    {isDone ? "Play Again" : "Check Answers"}
+                </button>
             </div>
         </div>
     )

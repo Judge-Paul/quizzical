@@ -103,3 +103,9 @@ body {
         height: 3rem;
     }
 }
+
+.answers-sec {
+    font-size: 1.5rem;
+    color: #293264;
+    font-weight: 700;
+}
