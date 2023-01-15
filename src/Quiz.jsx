@@ -3,9 +3,10 @@ import Question from './Question'
 import { nanoid } from 'nanoid'
 import { decode } from 'html-entities'
 
-export default function Quiz() {
+export default function Quiz(props) {
+    const {amount, category, difficulty, type} = props.apiData
     const [quiz, setQuiz] = useState([])
-    const apiURL = "https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple"
+    const apiURL = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`
     const [questionsData, setQuestionsData] = useState([])
     const [correctAnswers, setCorrectAnswers] = useState(0) 
     const [isDone, setIsDone] = useState(false)

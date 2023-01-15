@@ -1,22 +1,6 @@
 import React, { useState } from 'react'
 
 function Home(props) {
-    const [apiData, setApiData] = useState({
-        amount: "5",
-        category: "General Knowledge",
-        difficulty: "Easy",
-        type: "Multiple Choice"
-    })
-
-    function handleFormChange(event) {
-        const {name, value} = event.target
-        setApiData(prevApiData => ({
-                ...prevApiData, 
-                    [name] : value 
-        }))
-    }
-    console.log(apiData)
-
     return(
         <div className="d-flex flex-column align-items-center justify-content-center home-sec">
             <div className="home--text mb-3">
@@ -29,16 +13,16 @@ function Home(props) {
                     name="amount" 
                     id="amount" 
                     className="form-control"
-                    value={apiData.amount}
+                    value={props.apiData.amount}
                     min="1" max="50"
-                    onChange={handleFormChange}
+                    onChange={props.handleFormChange}
                 />
                 <select 
                     name="category"
                     id="category"
                     className="form-control"
-                    value={apiData.category}
-                    onChange={handleFormChange}
+                    value={props.apiData.category}
+                    onChange={props.handleFormChange}
                 >
 			        <option value="9">General Knowledge</option>
                     <option value="10">Entertainment: Books</option>
@@ -69,8 +53,8 @@ function Home(props) {
                     name="difficulty"
                     id="difficulty"
                     className="form-control"
-                    value={apiData.difficulty}
-                    onChange={handleFormChange}
+                    value={props.apiData.difficulty}
+                    onChange={props.handleFormChange}
                 >
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
@@ -80,8 +64,8 @@ function Home(props) {
                     name="type"
                     id="type"
                     className="form-control"
-                    value={apiData.type}
-                    onChange={handleFormChange}
+                    value={props.apiData.type}
+                    onChange={(event) => props.handleFormChange(event)}
                 >
                         <option value="multiple">Multiple Choice</option>
                         <option value="boolean">True / False</option>
