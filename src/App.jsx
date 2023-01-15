@@ -18,7 +18,6 @@ function App() {
                   [name] : value 
       }))
   }
-  console.log(apiData)
 
   function startGame() {
     sethasGameStarted(true)

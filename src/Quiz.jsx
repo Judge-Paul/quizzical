@@ -5,7 +5,6 @@ import { decode } from 'html-entities'
 
 export default function Quiz(props) {
     const {amount, category, difficulty, type} = props.apiData
-    console.log(category)
     const [quiz, setQuiz] = useState([])
     const apiURL = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`
     const [questionsData, setQuestionsData] = useState([])
