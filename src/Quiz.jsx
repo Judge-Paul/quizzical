@@ -74,7 +74,7 @@ export default function Quiz(props) {
     }
     
     function getCorrectAnswers(answers) {
-        setCorrectAnswers(answers/2)
+        setCorrectAnswers(answers)
     }
 
     const quizElements = quiz.map(quizData => {
